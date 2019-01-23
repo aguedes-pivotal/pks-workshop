@@ -2,9 +2,11 @@
 
 ## Setup Ldap Server:
 
-`cd ldap-server`
-`docker build -t ldap-server .`
-`docker run -d -p 1389:389 -p 1636:636 ldap-server slapd  -h "ldap://0.0.0.0:389  ldaps://0.0.0.0:636" -d 3 -f /ldap/slapd.conf`
+```
+cd ldap-server
+docker build -t ldap-server .
+docker run -d -p 1389:389 -p 1636:636 ldap-server slapd  -h "ldap://0.0.0.0:389  ldaps://0.0.0.0:636" -d 3 -f /ldap/slapd.conf
+```
 
 You should have now an LDAP Server running on port 1389 (no TLS) or 1636 (TLS enabled).
 Now import the sample data:
@@ -13,10 +15,12 @@ Now import the sample data:
 
 After importing the data you'll have the following groups and it's members (the password for all users is `mypassword`):
 
+```
 superadmins: user1
 readonly: user2
 ops: user3, user4
 appdev: user5
+```
 
 ## Configuring PKS to integrate with LDAP:
 
@@ -50,6 +54,7 @@ TO-DO
 This script will do all the hard work to generate a `kubeconfig` to make it really easy to switch between users within your Kubernetes cluster.
 
 `kubectl config view --raw -o json | jq -r '.clusters[] | select(.name == "'$(kubectl config current-context)'") | .cluster."certificate-authority-data"' | base64 --decode > ca-cert.crt`
+
 `./scripts/get-pks-k8s-config.sh --API=api.pks.moscow.cf-app.com --CLUSTER=k8s.moscow.cf-app.com --USER=user1 --NS=k8s --CERT=ca-cert.crt`
 
 Used the following article to get credentials for the multiple users:
