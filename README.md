@@ -2,6 +2,8 @@
 
 ## Setup Ldap Server:
 
+You'll need a VM with Docker installed to run the LDAP Server - this could be a new compute insntace within GCP or another VM on your vSphere environment. Bare in mind that the PKS UAA VM will need access to this VM on port 1636 (TLS) or 1386 (no TLS).
+
 ```
 cd ldap-server
 docker build -t ldap-server .
