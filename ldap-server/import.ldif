@@ -1,0 +1,134 @@
+version: 1
+
+dn: dc=example,dc=com
+objectClass: organization
+objectClass: dcObject
+dc: example
+o: pivotal
+
+dn: ou=people,dc=example,dc=com
+objectClass: organizationalUnit
+ou: people
+description: All people in organisation
+
+dn: ou=groups,dc=example,dc=com
+objectClass: organizationalUnit
+ou: groups
+description: All groups in organisation
+
+dn: cn=user1,ou=people,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: user1
+sn: user1
+description: user1 account
+displayName: user1
+givenName: user1
+homePhone: 401-555-1234
+labeledURI: http://www.google.com
+mail: user1@example.com
+telephoneNumber: x105
+title: GSA
+uid: user1
+userPassword: {SHA}kd/Z3bQZiv/FwZTNjObTOP3kcOI=
+
+dn: cn=user2,ou=people,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: user2
+sn: user2
+description: useraccount
+displayName: user2
+givenName: user2
+homePhone: 401-555-1234
+labeledURI: http://www.google.com
+mail: user2@example.com
+telephoneNumber: x105
+uid: user2
+userPassword: {SHA}kd/Z3bQZiv/FwZTNjObTOP3kcOI=
+
+dn: cn=finance,ou=groups,dc=example,dc=com
+objectClass: groupOfUniqueNames
+cn: finance
+uniqueMember: cn=user1,ou=people,dc=example,dc=com
+description: finance@example.com
+
+dn: cn=user3,ou=people,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: user3
+sn: user3
+description: useraccount
+displayName: user3
+givenName: user3
+homePhone: 401-555-1234
+labeledURI: http://www.google.com
+mail: user3@example.com
+telephoneNumber: x105
+uid: user3
+userPassword: {SHA}kd/Z3bQZiv/FwZTNjObTOP3kcOI=
+
+dn: cn=user4,ou=people,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: user4
+sn: user4
+description: useraccount
+displayName: user4
+givenName: user4
+homePhone: 401-555-1234
+labeledURI: http://www.google.com
+mail: user4@example.com
+telephoneNumber: x105
+uid: user4
+userPassword: {SHA}kd/Z3bQZiv/FwZTNjObTOP3kcOI=
+
+dn: cn=user5,ou=people,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: user5
+sn: user5
+description: useraccount
+displayName: user5
+givenName: user5
+homePhone: 401-555-1234
+labeledURI: http://www.google.com
+mail: user3@example.com
+telephoneNumber: x105
+uid: user5
+userPassword: {SHA}kd/Z3bQZiv/FwZTNjObTOP3kcOI=
+
+dn: cn=superadmins,ou=groups,dc=example,dc=com
+objectClass: groupOfUniqueNames
+cn: superadmins
+uniqueMember: cn=user1,ou=people,dc=example,dc=com
+description: superadmins@example.com
+
+dn: cn=readonly,ou=groups,dc=example,dc=com
+objectClass: groupOfUniqueNames
+cn: readonly
+uniqueMember: cn=user2,ou=people,dc=example,dc=com
+description: readonly@example.com
+
+dn: cn=ops,ou=groups,dc=example,dc=com
+objectClass: groupOfUniqueNames
+cn: ops
+uniqueMember: cn=user3,ou=people,dc=example,dc=com
+uniqueMember: cn=user4,ou=people,dc=example,dc=com
+description: ops@example.com
+
+dn: cn=appdev,ou=groups,dc=example,dc=com
+objectClass: groupOfUniqueNames
+cn: appdev
+uniqueMember: cn=user5,ou=people,dc=example,dc=com
+description: appdev@example.com
