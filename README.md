@@ -60,9 +60,22 @@ In this case I'm mapping any users part of the `superadmins` LDAP group as PKS A
 ## Create a Kubernetes cluster with the PKS API
 
 ```
-pks login -u user1 -p mypassword -a api.pks.moscow.cf-app.com -k
-pks create-cluster k8s --external-hostname k8s.moscow.cf-app.com --plan PLAN
+pks login -u user1 -p mypassword -a PKS_API_URL -k
+pks create-cluster k8s --external-hostname EXTERNAL_HOSTNAME_K8S_API --plan PLAN
 ```
+
+This will take a moment. You should be able to check progress using `pks cluster k8s`.
+Once the `Last Action State` changes to `succeeded` the cluster creation is finished.
+
+You'll now need to create a DNS entry specified on the `create-cluster` external hostname poiting to the cluster Master IP addresses that can be found within `Kubernetes Master IP(s)` part of the `pks cluster k8s` output.
+
+Once this is done, you should be able to login to the cluster by acquiring credetials with:
+```
+pks get-credentials k8s
+kubectl config use-context k8s
+```
+
+From now on your `kubectl` CLI should be configured to be used. You can try running `kubectl cluster-info` to check connectivity. If you encounter problems at this stage, check your IaaS firewall.
 
 ## Create a Namespace, Role and RoleBinding as part of your Kubernetes cluster
 
