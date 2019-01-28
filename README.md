@@ -7,7 +7,7 @@ You'll need a VM with Docker installed to run the LDAP Server - this could be a 
 ```
 cd ldap-server
 docker build -t ldap-server .
-docker run -d -p 1389:389 -p 1636:636 ldap-server slapd  -h "ldap://0.0.0.0:389  ldaps://0.0.0.0:636" -d 3 -f /ldap/slapd.conf
+docker run -d -p 1389:389 -p 1636:636 ldap-server slapd  -h "ldap://0.0.0.0:389  ldaps://0.0.0.0:636" -d 3 -f /opt/ldap/slapd.conf
 ```
 
 You should have now an LDAP Server running on port 1389 (no TLS) or 1636 (TLS enabled).
