@@ -1,0 +1,11 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: nsx-deny-egress-policy
+  namespace: appdev
+spec:
+  podSelector:
+    matchLabels:
+      secgroup: web-tier
+  policyTypes:
+  - Egress

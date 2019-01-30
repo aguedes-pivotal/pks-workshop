@@ -1,0 +1,10 @@
+apiVersion: apps.pivotal.io/v1beta1
+kind: Sink
+metadata:
+  name: default-namespace-sink
+  namespace: default
+spec:
+  type: syslog
+  host: 10.193.209.31
+  port: 514
+  enable_tls: false

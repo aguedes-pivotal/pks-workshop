@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: nsx-demo
+  name: nsx-demo
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: nsx-demo
+  type: LoadBalancer
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nsx-demo
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nsx-demo
+        secgroup: web-tier
+    spec:
+      containers:
+      - name: nsx-demo
+        image: yfauser/nsx-demo
+        ports:
+        - containerPort: 80
