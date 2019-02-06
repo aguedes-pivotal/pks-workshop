@@ -4,6 +4,11 @@
 
 You'll need a VM with Docker installed to run the LDAP Server - this could be a new compute insntace within GCP or another VM on your vSphere environment. Bare in mind that the PKS UAA VM will need access to this VM on port 1636 (TLS) or 1386 (no TLS).
 
+You can just run the Docker image:
+```docker run -d -p 1389:389 -p 1636:636 alexguedes/ldap-server slapd  -h "ldap://0.0.0.0:389  ldaps://0.0.0.0:636" -d 3 -f /opt/ldap/slapd.conf```
+
+
+Or if you don't have access to Dockerhub you could build the the image:
 ```
 cd ldap-server
 docker build -t ldap-server .
